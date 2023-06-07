@@ -1,5 +1,5 @@
 import { Component, AfterViewChecked} from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Message } from 'src/interfaces/message.interface';
 
 @Component({
@@ -8,7 +8,7 @@ import { Message } from 'src/interfaces/message.interface';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements AfterViewChecked{
-  title = 'livechat';
+  
 
   ngAfterViewChecked(): void {
     let chatEl = document.getElementById('chat');
@@ -18,8 +18,11 @@ export class AppComponent implements AfterViewChecked{
       behavior: "smooth",
     });
   }
+
+  title = 'livechat';
   messageCount:number = 0;
   userMessage = new FormControl('');
+  isCharLimitExceeded:boolean = false;
   messages: Message[] = [
     {
       id: 'user1',
@@ -86,13 +89,17 @@ export class AppComponent implements AfterViewChecked{
   ];
 
   sendMessage() {
+    let message = this.userMessage.value;
+    if(message === null || message!.trim() === "")
+    {
+      this.userMessage.setValue('');
+      return;
+    }
+  
     this.messages.push({
       id: 'user11',
-      username: 'test_send',
-      content:
-        this.userMessage.value === null
-          ? '<Your message could not be sent>'
-          : this.userMessage.value,
+      username: 'test_user',
+      content: message,
       usernameColor: '#e24e22',
     });
     this.userMessage.setValue('');

@@ -13,6 +13,7 @@
 #chat{
     height: 100vh;
     overflow-y: scroll;
+    overflow-wrap: break-word;
 }
 input{
     background-color: rgb(234, 234, 234);
