@@ -1,7 +1,8 @@
 # Livechat
 This is a live chat similar to the one on twitch.
 - It has the feature of autoscroll, which automatically scrolls the chat for new incoming messages.
-- Currently, it does not have a server generating messages, it is tested using some dummy data and a sendMessage() function to test the autoscrolling.
+- Has a backend server (published as another repo) which manages messages using Socket.io, built with express.
+- The styling of the chat messages is inspired by Twitch chat.
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
