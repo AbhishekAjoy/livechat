@@ -1,5 +1,8 @@
-<div class="message">
-    <span class = "username" [style.color]="message.usernameColor"> 
-        <b>{{message.username}} : </b> 
-    </span>{{message.content}}
+<div class="message" *ngIf = "message.username.length > 0">
+    <div *ngIf = "!isInfo; else infoMessage">
+        <span class = "username"  [style.color]="message.usernameColor"> 
+            <b>{{message.username}} : </b> 
+        </span>{{message.content}}
+    </div>
+    <ng-template #infoMessage style="color:grey"><i>{{message.username}} {{message.content}}</i></ng-template>
 </div>
